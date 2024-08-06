@@ -11,13 +11,13 @@ This repository contains a Python implementation of a Potential Field Planner fo
 - **Trajectory Planning:** Plans safe paths for multiple robots from start to goal points, avoiding obstacles.
 - **Obstacle Avoidance:** In this project, potential fields for obstacles are represented by calculating repulsive forces that push robots away from obstacles. Obstacles are approximated as point sources during the calculation to simplify the interaction. The overall force acting on each robot is computed as the vector sum of virtual repulsive forces from obstacles and attractive forces towards the goal, taking into account the distances between the robot, obstacles, and goal. 
 - **Local Minimum Handling:** Detects and escapes local minima situations where robots are trapped.
-- **Group Behavior:** Supports leader-following (`follow`) and distance maintenance (`maintain_distance`) within a robot group.
-- **Random Scene Generation:** Includes a feature (`random_obs`) to generate random obstacles in the environment (works imperfectly).
+- **Group Behavior:** Supports leader-following and distance maintenance within a robot group.
+- **Random Scene Generation:** Includes a feature to generate random obstacles in the environment (works imperfectly).
 - **3D Visualization:** Provides visualization of the planned trajectories in a 3D environment.
 
 ## Installation
 
-To use the Potential Field Planner, you need Python installed. The following Python packages are required:
+To use the Potential Field Planner, you need Python 3.8+ installed. The following Python packages are required:
 
 - `numpy`
 - `matplotlib`
@@ -50,7 +50,7 @@ pip install numpy matplotlib
    You can create a custom scenario or experiment by modifying the settings in `config.py` and `experiments.py` or directly within your Python scripts.
 
 5. **Random Scene Generation:**
-   Use the `random_obs` flag to generate a random scene with obstacles. Note that this feature is not fully reliable and may produce unexpected results.
+   Use the `Scene.RANDOM_OBS` in `config.py` to generate a random scene with obstacles. Note that this feature is not fully reliable and may produce unexpected results.
 
 6. **Group Behavior Control:**
    - Use the `follow` flag to enable a leader-following behavior among the robots.

@@ -13,7 +13,11 @@ from potential_field_planner import PotentialFieldPlanner
 from smooth_path import smooth_path
 from tools import PolygonGenerator, generate_start_and_end_points, convert_params_to_vertices_and_faces
 
-max_x, max_y, max_z, num_obstacles, predefined_obstacles_xx, predefined_obstacles_yy, predefined_obstacles_heights, start_point, end_point, num_robots = getSceneData(predefined_scene)
+(
+    max_x, max_y, max_z, num_obstacles,
+    predefined_obstacles_xx, predefined_obstacles_yy, predefined_obstacles_heights,
+    start_point, end_point, num_robots
+) = getSceneData(predefined_scene)
 
 start_points, end_points = generate_start_and_end_points((max_x, max_y, max_z), num_robots, start_point, end_point, min_distance_between_robots)
 
