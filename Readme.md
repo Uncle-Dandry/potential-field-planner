@@ -47,7 +47,7 @@ pip install numpy matplotlib
    ```
 
 4. **Run a Custom Simulation:**
-   You can create a custom scenario or experiment by modifying the settings in `config.py` or directly within your Python scripts.
+   You can create a custom scenario or experiment by modifying the settings in `config.py` and `experiments.py` or directly within your Python scripts.
 
 5. **Random Scene Generation:**
    Use the `random_obs` flag to generate a random scene with obstacles. Note that this feature is not fully reliable and may produce unexpected results.
