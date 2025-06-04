@@ -57,16 +57,8 @@ def check_path_intersection(vertices_build, faces_build, path_x, path_y, path_z)
   return False
 
 def linear_interpolate(s, x, s_new):
-  x_smooth = np.zeros(len(s_new))
-
-  for i in range(len(s_new)):
-    for j in range(len(s) - 1):
-      if s[j] <= s_new[i] <= s[j + 1]:
-        t = (s_new[i] - s[j]) / (s[j + 1] - s[j])
-        x_smooth[i] = (1 - t) * x[j] + t * x[j + 1]
-        break
-
-  return x_smooth
+  """Vectorized linear interpolation using NumPy."""
+  return np.interp(s_new, s, x)
 
 def smooth_trajectory(path):
   x = path[0]

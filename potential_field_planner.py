@@ -129,7 +129,10 @@ class PotentialFieldPlanner:
         obstacles_inner[robot_index] = robot_trajectory_new[-1]
 
         target_reached_flags[robot_index] = target_reached_flag_new
-        flag_out = all(target_reached_flags)
+
+        if all(target_reached_flags):
+          flag_out = True
+          break
         
       current_point += 1
 
