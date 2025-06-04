@@ -97,14 +97,10 @@ class UpdateRobotTrajectory:
         out=np.zeros_like(local_obstacle_radius),
         where=(distance_to_obstacles[local_obstacles_indices] != 0)
       )
-      local_obstacles_actual = local_obstacles.copy()
+      local_obstacles_actual = local_obstacles + dividing[:, None] * (current_position - local_obstacles)
 
-      for j in range(local_obstacles.shape[1]):
-        local_obstacles_actual[j, :] = local_obstacles[j, :] + dividing[j] * (current_position - local_obstacles[j, :])
-
-      x_tilde = np.sum(delta_obs * local_obstacles_actual[:, 0]) / (1 - approach_coefficient)
-      y_tilde = np.sum(delta_obs * local_obstacles_actual[:, 1]) / (1 - approach_coefficient)
-      z_tilde = np.sum(delta_obs * local_obstacles_actual[:, 2]) / (1 - approach_coefficient)
+      weighted = np.sum(delta_obs[:, None] * local_obstacles_actual, axis=0) / (1 - approach_coefficient)
+      x_tilde, y_tilde, z_tilde = weighted
 
       force_x = (x_tilde - current_position[0]) * (1 - approach_coefficient) - approach_coefficient * (
         goal_point[0] - current_position[0]) * self.RB / self.strekeAB(current_position, goal_point)
